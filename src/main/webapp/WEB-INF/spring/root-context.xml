@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+    <context:component-scan base-package="nl.sogyo.boilerplate" />
+
+    <bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- Invokes Spring MVC @Controller methods
+    <beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <beans:property name="webBindingInitializer"> -->
+            <!-- Configures Spring MVC DataBinder instances
+            <beans:bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+                <beans:property name="validator" ref="validator" />
+            </beans:bean>
+        </beans:property>
+    </beans:bean> -->
+    
+    <!-- Creates the JSR-303 Validator
+    <beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />  -->
+        
+    <import resource="db-config.xml" />
+	
+</beans>

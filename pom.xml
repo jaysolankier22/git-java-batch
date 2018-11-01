@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nl.sogyo</groupId>
+	<artifactId>java-project-boilerplate</artifactId>
+	<name>Java Enterprise Project Boilerplate</name>
+	<packaging>war</packaging>
+	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<properties>
+		<java-version>1.6</java-version>
+		<org.springframework-version>3.1.2.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.7.0</org.aspectj-version>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<com.sun.jersey-version>1.13</com.sun.jersey-version>
+		<!-- Hibernate 3 -->
+		<!-- <org.hibernate-version>3.6.10.Final</org.hibernate-version> -->
+		<!-- Hibernate 4 -->
+		<org.hibernate-version>4.1.6.Final</org.hibernate-version>
+	</properties>
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+			<exclusions>
+                <!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				 </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+				
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+				
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		<!-- JAX-RS JSR-311 (REST) Implementation -->
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-bundle</artifactId>
+		    <version>${com.sun.jersey-version}</version>
+		</dependency>
+		<!-- Enable Spring Dependency Injection for Jersey Components -->
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-spring</artifactId>
+            <version>${com.sun.jersey-version}</version>
+            <!-- Needs exclusions until Spring 3.x is supported
+                http://java.net/jira/browse/JERSEY-750 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- TODO: Upgrade to Jackson 2.x 
+             http://wiki.fasterxml.com/JacksonHome -->
+		<dependency>
+		    <groupId>org.codehaus.jackson</groupId>
+		    <artifactId>jackson-mapper-asl</artifactId>
+		    <version>1.9.9</version>
+		</dependency>
+   		
+		<!-- Hibernate -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-entitymanager</artifactId>
+		    <version>${org.hibernate-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>4.2.0.Final</version>
+		</dependency>
+		<!-- Needed for Hibernate4
+		     See: http://blog.springsource.org/2012/04/06/migrating-to-spring-3-1-and-hibernate-4-1/ -->
+		<dependency>
+		     <groupId>cglib</groupId>
+		     <artifactId>cglib</artifactId>
+		     <version>2.2.2</version>
+		     <scope>runtime</scope>
+		</dependency>
+
+        <!-- Database -->
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.1-901.jdbc4</version>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+			<!-- Excluding hamcrest-core because spring-test-mvc depends on a newer version -->
+			<exclusions>
+			     <exclusion>
+			         <groupId>org.hamcrest</groupId>
+			         <artifactId>hamcrest-core</artifactId>
+			     </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>org.hsqldb</groupId>
+		    <artifactId>hsqldb</artifactId>
+		    <version>2.2.8</version>
+            <!-- <scope>test</scope>  -->
+		</dependency>
+		<!-- https://github.com/SpringSource/spring-test-mvc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test-mvc</artifactId>
+		    <version>1.0.0.M1</version>
+		    <scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${org.springframework-version}</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+	
+	<repositories>
+       <!-- Additional Respository for Spring Milestone Releases (spring-test-mvc) -->
+        <repository>
+            <id>org.springframework.maven.milestone</id>
+            <name>Maven Central Compatible Spring Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
+	   <!-- Official Respository for Spring Releases
+		<repository>
+		    <id>com.springsource.repository.bundles.release</id>
+		    <name>EBR Spring Release Repository</name>
+		    <url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+		    <id>com.springsource.repository.bundles.external</id>
+		    <name>EBR External Release Repository</name>
+		    <url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository> -->
+		<!-- Official Respository for JBoss Releases
+        <repository>
+            <id>org.jboss.repository.bundles.releases</id>
+            <name>JBoss Release Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+        </repository> -->
+		
+	</repositories>
+	
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <additionalProjectnatures>
+                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalBuildcommands>
+                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+                    </additionalBuildcommands>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <mainClass>org.test.int1.Main</mainClass>
+                </configuration>
+            </plugin>
+			<plugin>
+			     <!-- http://tomcat.apache.org/maven-plugin-2.0-SNAPSHOT/ -->
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0-SNAPSHOT</version>
+				<configuration>
+				    <server>TomcatServer</server>
+				    <url>http://localhost:8080/manager/html</url>
+				    <!-- <path>/java-project-boilerplate</path> -->
+				    <update>true</update>
+				</configuration>
+			</plugin>
+            <plugin>
+                <!-- https://docs.jboss.org/jbossas/7/plugins/maven/latest/usage.html -->
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.1.1.Final</version>
+                <!-- Disabled until Jenkis can deploy to JBoss
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>redeploy</goal>
+                        </goals>
+                    </execution>
+                </executions> -->
+				<!-- Options -->
+				<!-- <name /> The name you want to use for the deployment. This defaults to the file name. -->                
+				<!-- <hostname /> The host name of the server. The default is localhost. -->
+				<!-- <port /> The port the server is listening for administration requests on. The default is 9999. -->
+				<!-- <username /> The username to connect as if prompted to authenticate by the server. -->
+				<!-- <password /> The password to use for authentication if prompted by the server. -->
+				<!-- <force /> Whether or not for force the actions, e.g. if the deploy goal is executed redeploy if it already exists. The default is true. -->
+            </plugin>            
+        </plugins>
+    </build>
+    <pluginRepositories>
+        <!-- Added because default Mvn repository did not have all necessary dependencies for tomcat7-maven-plugin -->
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <name>Apache Snapshots</name>
+            <url>http://repository.apache.org/content/groups/snapshots-group/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>        
+    </pluginRepositories>
+</project>
